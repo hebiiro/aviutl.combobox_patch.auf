@@ -148,7 +148,7 @@ namespace deploy_filter_controls
 				// 一時的にカレントのアイテム名をセットしてからデフォルト処理を実行します。
 				// デフォルト処理の中で呼ばれる::SendMessageA()をフックします。
 				// ここでセットしたcurrent_item_namesはフック関数内で使用されます。
-				current_item_names = filter->check_name[0];
+				current_item_names = filter->check_name ? filter->check_name[0] : nullptr;
 				auto result = orig_proc(u1, object_index, filter_index, u4, u5, u6, u7);
 				current_item_names = nullptr;
 				return result;

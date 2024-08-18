@@ -140,6 +140,30 @@ inline struct CreateComboBox : Addin
 						auto filter_category_id = animation_effect_manager.get_category_id(object.get(), filter.index());
 						output_debug_string("フィルタカテゴリ => {}", filter_category_id);
 
+						// 選択アイテム(設定ダイアログ全体)ではなく、
+						// 例えばコンボボックスの選択だけが変更された場合は
+						if (!hive.hook_flag)
+						{
+							auto combobox_index = find_combobox_index(hwnd);
+							output_debug_string("コンボボックスインデックス => {}", combobox_index);
+
+							auto category_combobox = get_combobox(combobox_index + 1);
+							output_debug_string("カテゴリコンボボック => {:#010x}", (uint32_t)category_combobox);
+
+							auto category_index = cb::get_cur_sel(category_combobox);
+							output_debug_string("カテゴリインデックス => {}", category_index);
+#ifdef _DEBUG
+							auto category_text = cb::get_text(category_combobox, -1);
+							output_debug_string("カテゴリ文字列 => {}", category_text);
+
+							auto name = animation_effect_manager.get_name(object.get(), filter.index());
+							output_debug_string("アニメーション効果名 => {}", name);
+#endif
+							// カテゴリコンボボックスからフィルタカテゴリを取得します。
+							filter_category_id = category_index + 1;
+							output_debug_string("フィルタカテゴリ => {}", filter_category_id);
+						}
+
 						// フィルタのカテゴリが設定されていて、
 						// なおかつ最初のアイテム文字列がアニメーション効果名バッファの場合は
 						if (filter_category_id > 2 && (LPCSTR)lparam == animation_effect_manager.table)

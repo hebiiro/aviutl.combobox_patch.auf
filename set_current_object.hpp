@@ -18,6 +18,8 @@ inline struct SetCurrentObject : Addin
 	{
 		output_debug_string("set_current_object({})", object_index);
 
+		Hive::HookFlagManager hook_flag_manager;
+
 		if (!hive.fp->check[0])
 			return orig_proc(object_index);
 

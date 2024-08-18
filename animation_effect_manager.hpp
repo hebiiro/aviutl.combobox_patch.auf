@@ -18,6 +18,16 @@ inline struct AnimationEffectManager : Addin
 	}
 
 	//
+	// アニメーション効果名を返します。
+	//
+	LPCSTR get_name(ExEdit::Object* object, int32_t filter_index)
+	{
+		auto exdata = (ExEdit::Exdata::efAnimationEffect*)exin::get_exdata(object, filter_index);
+
+		return exdata->name;
+	}
+
+	//
 	// カテゴリIDを返します。
 	//
 	int32_t get_category_id(ExEdit::Object* object, int32_t filter_index)

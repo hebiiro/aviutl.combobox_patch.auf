@@ -13,6 +13,7 @@
 #include "exin.hpp"
 #include "utils.hpp"
 #include "addin.hpp"
+#include "combobox.hpp"
 #include "animation_effect_manager.hpp"
 #include "create_combobox.hpp"
 #include "set_current_object.hpp"

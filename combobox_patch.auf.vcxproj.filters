@@ -6,4 +6,13 @@
   <ItemGroup>
     <None Include="main.def" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="addin.hpp" />
+    <ClInclude Include="exin.hpp" />
+    <ClInclude Include="hive.hpp" />
+    <ClInclude Include="utils.hpp" />
+    <ClInclude Include="create_combobox.hpp" />
+    <ClInclude Include="set_current_object.hpp" />
+    <ClInclude Include="animation_effect_manager.hpp" />
+  </ItemGroup>
 </Project>
